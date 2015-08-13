@@ -124,7 +124,7 @@
         [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
         public T GetExportedValueOrDefault<T>(string contractName = null)
         {
-            if (this.Container == null)
+            if (Container == null)
             {
                 this.Initialize();
             }

@@ -21,7 +21,7 @@
         /// <summary>
         /// Waits until the action returns true.
         /// </summary>
-        /// <exception cref="TimeoutException">Thrown when the timeout exceeds.</exception>
+        /// <exception cref="TimeoutException">Thrown when the given timeout exceeds.</exception>
         public static void UntilTrue(Func<bool> action, TimeSpan timeout)
         {
             if (action == null)
@@ -29,11 +29,11 @@
                 throw new ArgumentNullException("action");
             }
 
-            var retryUnil = DateTime.Now.Add(timeout);
+            var retryUntil = DateTime.Now + timeout;
 
-            while (retryUnil >= DateTime.Now)
+            while (retryUntil >= DateTime.Now)
             {
-                var result = action.Invoke();
+                var result = action();
 
                 if (result)
                 {
@@ -56,27 +56,11 @@
         /// <summary>
         /// Waits until the action returns false.
         /// </summary>
-        /// <exception cref="TimeoutException">Thrown when the timeout (30 seconds) exceeds.</exception>
+        /// <exception cref="TimeoutException">Thrown when the given timeout exceeds.</exception>
         public static void UntilFalse(Func<bool> action, TimeSpan timeout)
         {
-            if (action == null)
-            {
-                throw new ArgumentNullException("action");
-            }
-
-            var retryUnil = DateTime.Now.Add(timeout);
-
-            while (retryUnil >= DateTime.Now)
-            {
-                var result = action.Invoke();
-
-                if (!result)
-                {
-                    return;
-                }
-            }
-
-            throw new TimeoutException();
+            if (action == null) throw new ArgumentNullException("action");
+            UntilTrue(() => !action(), timeout);
         }
     }
 }

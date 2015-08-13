@@ -1,4 +1,7 @@
-﻿namespace AIT.VisualStudio.TestTools.Common
+﻿using System.Globalization;
+using System.Text;
+
+namespace AIT.VisualStudio.TestTools.Common
 {
     using System;
     using System.Diagnostics;
@@ -14,18 +17,26 @@
     {
         #region Fields
 
-        private TimeSpan _expectedMaximumExecutionTime = TimeSpan.MaxValue;
+        private readonly string _caller;
+        private bool _isStopped = false;
 
         private string Caller
         {
-            get;
-            set;
+            get { return _caller; }
         }
+
+        private readonly Stopwatch _stopWatch;
 
         private Stopwatch StopWatch
         {
-            get;
-            set;
+            get { return _stopWatch; }
+        }
+
+        private readonly TimeSpan _expectedMaximumExecutionTime;
+
+        private TimeSpan ExpectedMaximumExecutionTime
+        {
+            get { return _expectedMaximumExecutionTime; }
         }
 
         #endregion
@@ -35,44 +46,41 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeTaker" /> class.
         /// </summary>
-        /// <param name="caller">The caller.</param>
-        [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
-        public TimeTaker([CallerMemberName] string caller = "")
-        {
-            Caller = caller;
-            StopWatch = new Stopwatch();
-            StopWatch.Start();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TimeTaker" /> class.
-        /// </summary>
         /// <param name="expectedMaximumExecutionTime">The expected maximum execution time.</param>
         /// <param name="caller">The caller.</param>
+        private TimeTaker(TimeSpan expectedMaximumExecutionTime, string caller)
+        {
+            _expectedMaximumExecutionTime = expectedMaximumExecutionTime;
+            _caller = caller;
+            _stopWatch = new Stopwatch();
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimeTaker" /> class and starts tracking the time.
+        /// </summary>
         [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
-        public TimeTaker(TimeSpan expectedMaximumExecutionTime, [CallerMemberName] string caller = "")
-            : this(caller)
+        public static TimeTaker Begin(TimeSpan expectedMaximumExecutionTime, [CallerMemberName] string caller = "")
         {
-            ExpectedMaximumExecutionTime = expectedMaximumExecutionTime;
-        }
-
-        #endregion
-
-        #region Private Properties
-
-        private TimeSpan ExpectedMaximumExecutionTime
-        {
-            get
+            TimeTaker result;
+            TimeTaker timeTaker = null;
+            try
             {
-                return this._expectedMaximumExecutionTime;
+                timeTaker = new TimeTaker(expectedMaximumExecutionTime, caller);
+                timeTaker.StopWatch.Start();
+                result = timeTaker;
+                timeTaker = null;
             }
-            set
+            finally
             {
-                this._expectedMaximumExecutionTime = value;
+                if (timeTaker != null)
+                {
+                    timeTaker.Dispose();
+                }
             }
+            return result;
         }
-
-        #endregion
 
         /// <summary>
         /// Gets the elapsed time.
@@ -94,6 +102,41 @@
             GC.SuppressFinalize(this);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed", Justification = "This is a private method.")]
+        private void End(bool throwExn, string message = "Maximum execution time was exceeded!")
+        {
+            if (_isStopped)
+            {
+                return;
+            }
+
+            _isStopped = true;
+            StopWatch.Stop();
+            var elapsedTime = StopWatch.Elapsed;
+            Trace.WriteLine(Caller + ": " + elapsedTime);
+
+            var msg = string.Format(CultureInfo.InvariantCulture, "{0}: {1}\nMax execution time: {2}, Actual: {3}.", Caller,
+                message, ExpectedMaximumExecutionTime, elapsedTime);
+            if (throwExn)
+            {
+                Assert.IsTrue(elapsedTime < ExpectedMaximumExecutionTime, msg);
+            }
+            else
+            {
+                Trace.WriteLine(msg);
+            }
+        }
+
+        /// <summary>
+        /// Ends the current execution time tracking and throws an exception if applicable
+        /// </summary>
+        /// <param name="message"></param>
+        [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed", Justification = "Used from C# only.")]
+        public void End(string message = "Maximum execution time was exceeded!")
+        {
+            End(true, message);
+        }
+
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.
         /// </summary>
@@ -104,12 +147,7 @@
         {
             if (disposing)
             {
-                var elapsedTime = StopWatch.Elapsed;
-                Trace.WriteLine(Caller + ": " + elapsedTime);
-
-                StopWatch.Stop();
-
-                Assert.IsTrue(elapsedTime < ExpectedMaximumExecutionTime, "Expected max execution time exceeded.");
+                End(false);
             }
         }
     }

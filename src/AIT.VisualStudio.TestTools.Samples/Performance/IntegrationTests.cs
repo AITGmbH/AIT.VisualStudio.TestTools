@@ -19,12 +19,12 @@ namespace AIT.VisualStudio.TestTools.Samples.Performance
         [TestMethod]
         public void Method_Scenario_ExpectedResult()
         {
-            using (var timeTaker = new TimeTaker())
+            using (var timeTaker = TimeTaker.Begin(TimeSpan.FromSeconds(1)))
             {
                 // Execute methods which performance should get measured
                 Thread.Sleep(100);
 
-                timeTaker.ElapsedTime.Should().BeLessThan(TimeSpan.FromSeconds(1), "executing 'method' took longer than expected.");
+                timeTaker.End("executing 'method' took longer than expected.");
             }
         }
     }
