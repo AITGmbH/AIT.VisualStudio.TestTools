@@ -1,7 +1,7 @@
-﻿namespace AIT.VisualStudio.TestTools.Composition
-{
-    using System;
+﻿using System;
 
+namespace AIT.VisualStudio.TestTools.MEF
+{
     /// <summary>
     /// Container for passing stubs which should replace a export to the composition container.
     /// </summary>

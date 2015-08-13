@@ -1,8 +1,8 @@
-﻿namespace AIT.VisualStudio.TestTools.Extensions
-{
-    using System.Collections.Generic;
-    using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
+namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
+{
     /// <summary>
     /// Contains extension methods for the <see cref="DirectoryInfo"/> class.
     /// </summary>

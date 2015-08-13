@@ -1,17 +1,17 @@
-﻿namespace AIT.VisualStudio.TestTools.UITesting.Extensions
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Windows.Automation;
+
+using AIT.VisualStudio.TestTools.CodedUI.Attributes;
+
+using Microsoft.VisualStudio.TestTools.UITest.Extension;
+using Microsoft.VisualStudio.TestTools.UITesting;
+using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+
+namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Windows.Automation;
-
-    using AIT.VisualStudio.TestTools.UITesting.Attributes;
-
-    using Microsoft.VisualStudio.TestTools.UITest.Extension;
-    using Microsoft.VisualStudio.TestTools.UITesting;
-    using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
-
     using ControlType = Microsoft.VisualStudio.TestTools.UITesting.ControlType;
 
     /// <summary>
@@ -23,7 +23,7 @@
         /// Gets the specified control.
         /// </summary>
         /// <param name="container">The container.</param>
-        public static T Get<T>(this UITestControl container) where T : UITestControl, new()
+        public static T Find<T>(this UITestControl container) where T : UITestControl, new()
         {
             var automationIdAttribute = typeof(T).GetCustomAttributes(typeof(AutomationIdAttribute), true).OfType<AutomationIdAttribute>().FirstOrDefault();
 
@@ -32,7 +32,7 @@
                 throw new ArgumentOutOfRangeException("AutomationIdAttribute not set on type " + typeof(T));
             }
 
-            return Get<T>(container, automationIdAttribute.Id);
+            return Find<T>(container, automationIdAttribute.Id);
         }
 
         /// <summary>
@@ -40,17 +40,17 @@
         /// </summary>
         /// <param name="container">The container.</param>
         /// <param name="automationId">The automation identifier.</param>
-        public static T Get<T>(this UITestControl container, string automationId) where T : UITestControl, new()
+        public static T Find<T>(this UITestControl container, string automationId) where T : UITestControl, new()
         {
             var propertyExpressionCollection = new PropertyExpressionCollection { { WpfControl.PropertyNames.AutomationId, automationId }, };
 
-            return Get<T>(container, propertyExpressionCollection);
+            return Find<T>(container, propertyExpressionCollection);
         }
 
         /// <summary>
         /// Gets the specified control.
         /// </summary>
-        public static T Get<T>(this UITestControl container, PropertyExpressionCollection searchProperties) where T : UITestControl, new()
+        public static T Find<T>(this UITestControl container, PropertyExpressionCollection searchProperties) where T : UITestControl, new()
         {
             if (container == null)
             {
@@ -120,28 +120,9 @@
                 throw new ArgumentNullException("testControl");
             }
 
-            var isInvisible = (testControl.State & ControlStates.Invisible) == ControlStates.Invisible;
-
-            if (isInvisible)
-            {
-                return false;
-            }
-
-            var isCollapsed = (testControl.State & ControlStates.Collapsed) == ControlStates.Collapsed;
-
-            if (isCollapsed)
-            {
-                return false;
-            }
-
-            var isOffScreen = (testControl.State & ControlStates.Offscreen) == ControlStates.Offscreen;
-
-            if (isOffScreen)
-            {
-                return false;
-            }
-
-            return true;
+            return !testControl.State.HasFlag(ControlStates.Invisible) && 
+                   !testControl.State.HasFlag(ControlStates.Collapsed) && 
+                   !testControl.State.HasFlag(ControlStates.Offscreen);
         }
 
         /// <summary>
@@ -164,6 +145,9 @@
         /// <summary>
         /// Gets the children including their children.
         /// </summary>
+        /// <remarks>
+        /// Calling this method can be very time consuming.
+        /// </remarks>
         private static IEnumerable<UITestControl> GetChildren(this UITestControl control, bool includingChildren)
         {
             foreach (var child in control.GetChildren())

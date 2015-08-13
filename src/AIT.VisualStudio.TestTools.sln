@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Remote.W8Test.testsettings = Remote.W8Test.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.CodedUI", "AIT.VisualStudio.TestTools.CodedUI\AIT.VisualStudio.TestTools.CodedUI.csproj", "{714D3E6F-52FB-45B0-BF75-E1B022A59D13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.MEF", "AIT.VisualStudio.TestTools.MEF\AIT.VisualStudio.TestTools.MEF.csproj", "{7FB51465-FEB5-48E0-8E8B-9F7826E24999}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,16 +1,16 @@
-﻿namespace AIT.VisualStudio.TestTools.UITesting
+﻿using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+
+using AIT.VisualStudio.TestTools.CodedUI.Extensions;
+
+using Microsoft.VisualStudio.TestTools.UITest.Extension;
+using Microsoft.VisualStudio.TestTools.UITesting;
+
+namespace AIT.VisualStudio.TestTools.CodedUI
 {
-    using System;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Linq;
-
-    using AIT.VisualStudio.TestTools.Extensions;
-
-    using Microsoft.VisualStudio.TestTools.UITest.Extension;
-    using Microsoft.VisualStudio.TestTools.UITesting;
-
     /// <summary>
     /// Client base class for UI tests.
     /// </summary>
@@ -27,14 +27,9 @@
         /// </summary>
         protected ApplicationUnderTest ApplicationUnderTest
         {
-            get
-            {
-                if (this._applicationUnderTest == null)
-                {
-                    this._applicationUnderTest = ApplicationUnderTest.FromProcess(ApplicationUnderTestProcess);
-                }
-
-                return this._applicationUnderTest;
+            get {
+                return _applicationUnderTest ??
+                       (_applicationUnderTest = ApplicationUnderTest.FromProcess(ApplicationUnderTestProcess));
             }
         }
 
@@ -50,7 +45,7 @@
         /// <summary>
         /// Gets the executable.
         /// </summary>
-        protected virtual FileInfo Executable
+        protected FileInfo Executable
         {
             get;
             private set;
@@ -62,21 +57,7 @@
         public bool ReuseExistingApplicationUnderTest
         {
             get;
-            set;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TestClientBase"/> class.
-        /// </summary>
-        /// <param name="reuseExistingApplicationUnderTest">if set to <c>true</c> an already running application under test should get reused.</param>
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TestClientBase(bool reuseExistingApplicationUnderTest = false)
-        {
-            ReuseExistingApplicationUnderTest = reuseExistingApplicationUnderTest;
-
-            InitializeExecutable();
-            SetPlaybackSettings();
-            LaunchApplicationUnderTest();
+            private set;
         }
 
         /// <summary>
@@ -84,14 +65,17 @@
         /// </summary>
         /// <param name="executable">The executable.</param>
         /// <param name="reuseExistingApplicationUnderTest">if set to <c>true</c> an already running application under test should get reused.</param>
-        /// <param name="searchExecutableIfNotFound">if set to <c>true</c> and the executable is not found it gets searched in other directories.</param>
-        [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TestClientBase(string executable, bool reuseExistingApplicationUnderTest = false, bool searchExecutableIfNotFound = true)
+        public TestClientBase(string executable, bool reuseExistingApplicationUnderTest = false)
         {
-            ReuseExistingApplicationUnderTest = reuseExistingApplicationUnderTest;
+            FileInfo fileInfo;
+            if (executable == null || (fileInfo = new FileInfo(executable)) == null || !fileInfo.Exists)
+            {
+                throw new ArgumentException("Executable file is invalid or was not found!");
+            }
 
-            InitializeExecutable(executable, searchExecutableIfNotFound);
+            ReuseExistingApplicationUnderTest = reuseExistingApplicationUnderTest;
+            Executable = fileInfo;
+
             SetPlaybackSettings();
             LaunchApplicationUnderTest();
         }
@@ -100,7 +84,7 @@
         {
             if (Executable != null && Executable.Exists)
             {
-                var directoryInfo = this.Executable.Directory;
+                var directoryInfo = Executable.Directory;
                 var workingDirectory = directoryInfo != null ? directoryInfo.FullName : Environment.CurrentDirectory;
 
                 if (ReuseExistingApplicationUnderTest)
@@ -151,28 +135,6 @@
             }
         }
 
-        private void InitializeExecutable()
-        {
-            if (Executable == null)
-            {
-                Executable = SearchExecutable();
-            }
-        }
-
-        private void InitializeExecutable(string executable, bool searchExcecutableIfNotFound = true)
-        {
-            var fileInfo = new FileInfo(Path.GetFullPath(executable));
-
-            if (fileInfo.Exists)
-            {
-                Executable = fileInfo;
-            }
-            else if (searchExcecutableIfNotFound)
-            {
-                Executable = this.SearchExecutable(fileInfo.Name);
-            }
-        }
-
         /// <summary>
         /// Searches the executable.
         /// </summary>
@@ -199,7 +161,7 @@
         /// <summary>
         /// Searches the executable.
         /// </summary>
-        protected virtual FileInfo SearchExecutable(string fileName)
+        public static string SearchExecutable(string fileName)
         {
             var fileInfo = new FileInfo(Path.GetFullPath(fileName));
 
@@ -207,7 +169,7 @@
 
             if (localFileInfo.Exists)
             {
-                return localFileInfo;
+                return localFileInfo.FullName;
             }
             else
             {
@@ -216,7 +178,7 @@
 
                 if (searchedFileInfo != null && searchedFileInfo.Exists)
                 {
-                    return searchedFileInfo;
+                    return searchedFileInfo.FullName;
                 }
             }
 
@@ -226,22 +188,19 @@
         /// <summary>
         /// Sets the playback settings.
         /// </summary>
-        protected virtual void SetPlaybackSettings()
+        private void SetPlaybackSettings()
         {
             Playback.PlaybackSettings.ThinkTimeMultiplier = 1;
             Playback.PlaybackSettings.SearchTimeout = 5000;
-            Playback.PlaybackSettings.SearchInMinimizedWindows = true;
             Playback.PlaybackSettings.WaitForReadyTimeout = 2000;
-            Playback.PlaybackSettings.DelayBetweenActions = 50;
             Playback.PlaybackSettings.SkipSetPropertyVerification = true;
             Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None;
             Playback.PlaybackSettings.MatchExactHierarchy = false;
-            Playback.PlaybackSettings.LoggerOverrideState = HtmlLoggerState.AllActionSnapshot;
         }
 
         #region Process Handling
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private static Process GetExistingApplicationUnderTest(FileInfo executable)
         {
             foreach (var p in Process.GetProcesses())
@@ -250,14 +209,15 @@
                 {
                     var fileName = Path.GetFullPath(p.MainModule.FileName);
 
-                    if (System.String.Compare(executable.FullName, fileName, System.StringComparison.OrdinalIgnoreCase) == 0)
+                    if (string.Compare(executable.FullName, fileName, StringComparison.OrdinalIgnoreCase) == 0)
                     {
                         return p;
                     }
                 }
-                catch
+                catch (Exception e)
                 {
                     // Just catch all exceptions
+                    Trace.TraceWarning("Could not compare process name with given executable: {0}", e);
                 }
             }
 

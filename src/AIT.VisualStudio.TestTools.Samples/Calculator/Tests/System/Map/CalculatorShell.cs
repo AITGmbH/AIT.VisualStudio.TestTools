@@ -1,6 +1,6 @@
 ﻿namespace AIT.VisualSTudio.TestTools.Samples.Calculator.Tests.System.Map
 {
-    using AIT.VisualStudio.TestTools.UITesting.Extensions;
+    using AIT.VisualStudio.TestTools.CodedUI.Extensions;
 
     using global::System.Globalization;
 
@@ -25,7 +25,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "1")
@@ -38,7 +38,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "2")
@@ -51,7 +51,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "3")
@@ -64,7 +64,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "4")
@@ -77,7 +77,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "5")
@@ -90,7 +90,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "6")
@@ -103,7 +103,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "7")
@@ -116,7 +116,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "8")
@@ -129,7 +129,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "9")
@@ -142,7 +142,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(UITestControl.PropertyNames.Name, "0")
@@ -155,13 +155,13 @@
             get
             {
                 var container =
-                    this.Get<WinWindow>(
+                    this.Find<WinWindow>(
                         new PropertyExpressionCollection { new PropertyExpression(PropertyNames.ControlId, "150") });
 
                 container.WindowTitles.Add("Calculator");
 
                 return
-                    container.Get<WinText>(
+                    container.Find<WinText>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(
@@ -176,7 +176,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(
@@ -191,7 +191,7 @@
             get
             {
                 return
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(
@@ -208,7 +208,7 @@
             foreach (var digit in digits)
             {
                 var button =
-                    this.Get<WinButton>(
+                    this.Find<WinButton>(
                         new PropertyExpressionCollection
                             {
                                 new PropertyExpression(

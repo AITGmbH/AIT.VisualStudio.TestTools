@@ -1,6 +1,6 @@
 ﻿namespace AIT.VisualSTudio.TestTools.Samples.Calculator.Tests.System.Map
 {
-    using AIT.VisualStudio.TestTools.UITesting;
+    using AIT.VisualStudio.TestTools.CodedUI;
 
     using global::System;
     using global::System.IO;

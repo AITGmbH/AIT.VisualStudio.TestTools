@@ -1,10 +1,10 @@
-﻿namespace AIT.VisualStudio.TestTools.Extensions
-{
-    using System;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Threading;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
 
+namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
+{
     /// <summary>
     /// Extension methods for the <see cref="Process"/> class.
     /// </summary>
@@ -42,8 +42,9 @@
                     Thread.Sleep(100);
                 }
             }
-            catch (InvalidOperationException)
+            catch (InvalidOperationException e)
             {
+                Trace.TraceWarning("Ignoring Exception while closing process: {0}", e);
             }
         }
 

@@ -1,8 +1,8 @@
-﻿namespace AIT.VisualStudio.TestTools.UITesting.Attributes
-{
-    using System;
-    using System.Linq;
+﻿using System;
+using System.Linq;
 
+namespace AIT.VisualStudio.TestTools.CodedUI.Attributes
+{
     /// <summary />
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     public sealed class AutomationIdAttribute : Attribute

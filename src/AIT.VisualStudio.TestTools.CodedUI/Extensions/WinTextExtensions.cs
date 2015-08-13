@@ -1,10 +1,10 @@
-﻿namespace AIT.VisualStudio.TestTools.UITesting.Extensions
+﻿using System;
+using System.Globalization;
+
+using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+
+namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
 {
-    using System;
-    using System.Globalization;
-
-    using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
-
     /// <summary>
     /// Contains <see cref="WinText"/> extensions methods.
     /// </summary>
@@ -13,7 +13,7 @@
         /// <summary>
         /// Converts the display text to int.
         /// </summary>
-        public static int ToInt(this WinText testControl)
+        public static int GetDisplayTextAsInt(this WinText testControl)
         {
             if (testControl == null)
             {
@@ -26,7 +26,7 @@
         /// <summary>
         /// Converts the display text to double.
         /// </summary>
-        public static double ToDouble(this WinText testControl)
+        public static double GetDisplayTextAsDouble(this WinText testControl)
         {
             if (testControl == null)
             {
@@ -34,19 +34,6 @@
             }
 
             return double.Parse(testControl.DisplayText, CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>
-        /// Returns the display text.
-        /// </summary>
-        public static string ToString(this WinText testControl)
-        {
-            if (testControl == null)
-            {
-                throw new ArgumentNullException("testControl");
-            }
-
-            return testControl.DisplayText;
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     using AIT.VisualSTudio.TestTools.Samples.Calculator.Tests.System.Map;
     using AIT.VisualStudio.TestTools.Traits;
-    using AIT.VisualStudio.TestTools.UITesting.Extensions;
+    using AIT.VisualStudio.TestTools.CodedUI.Extensions;
 
     using Microsoft.VisualStudio.TestTools.UITesting;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
