@@ -6,7 +6,7 @@ namespace AIT.VisualStudio.TestTools.Traits
     public enum ExpectedExecutionTime
     {
         /// <summary>
-        /// It takes up to 50 ms to execute the test.
+        /// It takes up to 50 milliseconds to execute the test.
         /// </summary>
         Milliseconds,
 

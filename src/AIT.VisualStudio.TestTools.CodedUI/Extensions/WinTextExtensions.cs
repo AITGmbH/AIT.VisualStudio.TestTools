@@ -11,9 +11,9 @@ namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
     public static class WinTextExtensions
     {
         /// <summary>
-        /// Converts the display text to int.
+        /// Converts the display text to an integer.
         /// </summary>
-        public static int GetDisplayTextAsInt(this WinText testControl)
+        public static int GetDisplayTextAsNumber(this WinText testControl)
         {
             if (testControl == null)
             {

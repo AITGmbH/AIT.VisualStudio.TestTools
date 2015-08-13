@@ -19,15 +19,21 @@ namespace AIT.VisualStudio.TestTools.CodedUI
         #region Fields
 
         private ApplicationUnderTest _applicationUnderTest;
+        private bool _isStarted;
 
         #endregion
 
         /// <summary>
         /// Gets or sets the application under test.
         /// </summary>
+        [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "LaunchApplicationUnderTest")]
         protected ApplicationUnderTest ApplicationUnderTest
         {
             get {
+                if (!_isStarted)
+                {
+                    throw new InvalidOperationException("Please call the 'LaunchApplicationUnderTest' method first!");
+                }
                 return _applicationUnderTest ??
                        (_applicationUnderTest = ApplicationUnderTest.FromProcess(ApplicationUnderTestProcess));
             }
@@ -65,6 +71,7 @@ namespace AIT.VisualStudio.TestTools.CodedUI
         /// </summary>
         /// <param name="executable">The executable.</param>
         /// <param name="reuseExistingApplicationUnderTest">if set to <c>true</c> an already running application under test should get reused.</param>
+        [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed", Justification = "No interop with C++ required.")]
         public TestClientBase(string executable, bool reuseExistingApplicationUnderTest = false)
         {
             FileInfo fileInfo;
@@ -77,10 +84,12 @@ namespace AIT.VisualStudio.TestTools.CodedUI
             Executable = fileInfo;
 
             SetPlaybackSettings();
-            LaunchApplicationUnderTest();
         }
 
-        private void LaunchApplicationUnderTest()
+        /// <summary>
+        /// Call this to start the application.
+        /// </summary>
+        public void LaunchApplicationUnderTest()
         {
             if (Executable != null && Executable.Exists)
             {
@@ -119,6 +128,7 @@ namespace AIT.VisualStudio.TestTools.CodedUI
                 }
             }
 
+            _isStarted = true;
             Playback.PlaybackError += OnPlaybackError;
         }
 
@@ -188,7 +198,7 @@ namespace AIT.VisualStudio.TestTools.CodedUI
         /// <summary>
         /// Sets the playback settings.
         /// </summary>
-        private void SetPlaybackSettings()
+        private static void SetPlaybackSettings()
         {
             Playback.PlaybackSettings.ThinkTimeMultiplier = 1;
             Playback.PlaybackSettings.SearchTimeout = 5000;

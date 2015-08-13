@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools", "AIT.VisualStudio.TestTools\AIT.VisualStudio.TestTools.csproj", "{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.Samples", "AIT.VisualSTudio.TestTools.Samples\AIT.VisualStudio.TestTools.Samples.csproj", "{500A95FC-96B7-4EF7-B7B0-12411080A2B3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5086435-8DDD-4DCB-B720-26B868FB6BCD}"
 	ProjectSection(SolutionItems) = preProject
 		AIT.VisualStudio.TestTools.sln.DotSettings = AIT.VisualStudio.TestTools.sln.DotSettings
@@ -16,6 +12,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Remote.VSO.testsettings = Remote.VSO.testsettings
 		Remote.W8Test.testsettings = Remote.W8Test.testsettings
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Settings", ".Settings", "{97FCBC4F-6FDE-445F-8A05-F7C8256F8C7C}"
+	ProjectSection(SolutionItems) = preProject
+		AIT.CodeAnalysisDictionary.xml = AIT.CodeAnalysisDictionary.xml
+		AIT.ruleset = AIT.ruleset
+		AIT.VisualStudio.TestTools.sln.DotSettings = AIT.VisualStudio.TestTools.sln.DotSettings
+		Dummy.snk = Dummy.snk
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools", "AIT.VisualStudio.TestTools\AIT.VisualStudio.TestTools.csproj", "{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.Samples", "AIT.VisualSTudio.TestTools.Samples\AIT.VisualStudio.TestTools.Samples.csproj", "{500A95FC-96B7-4EF7-B7B0-12411080A2B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.CodedUI", "AIT.VisualStudio.TestTools.CodedUI\AIT.VisualStudio.TestTools.CodedUI.csproj", "{714D3E6F-52FB-45B0-BF75-E1B022A59D13}"
 EndProject

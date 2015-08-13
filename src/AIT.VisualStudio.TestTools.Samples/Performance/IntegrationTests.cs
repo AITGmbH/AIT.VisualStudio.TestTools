@@ -1,4 +1,7 @@
 ﻿using System;
+
+using AIT.VisualStudio.TestTools.Samples.Properties;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AIT.VisualStudio.TestTools.Samples.Performance
@@ -24,7 +27,7 @@ namespace AIT.VisualStudio.TestTools.Samples.Performance
                 // Execute methods which performance should get measured
                 Thread.Sleep(100);
 
-                timeTaker.End("executing 'method' took longer than expected.");
+                timeTaker.End(Resources.IntegrationTests_Method_Scenario_ExpectedResult_executing__method__took_longer_than_expected_);
             }
         }
     }
