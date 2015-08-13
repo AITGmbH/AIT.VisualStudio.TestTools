@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSettings
+  id="fad7d32c-8791-463b-8fb1-7bf311b568ad"
+  name="Local"
+  enableDefaultDataCollectors="false"
+  xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Description><!--_locID_text="Description1"-->These are default test settings for a local test run.</Description>
+  <Deployment enabled="false" />
+</TestSettings>

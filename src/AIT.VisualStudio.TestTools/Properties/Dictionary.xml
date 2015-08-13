@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<Dictionary>
+  <Words>
+    <Compound/>
+    <Recognized>
+      <Word>AIT</Word>
+    </Recognized>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>AIT</Acronym>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>AIT.VisualStudio.TestTools</id>
+    <version>0.3</version>
+    <title>AIT Visual Studio Test Tools</title>
+    <authors>Boris Wehrle, Nico Orschel, Manuel Pfemeter</authors>
+    <description>Provides test extensions for unit-, integration- and system tests</description>
+    <licenseUrl>http://www.aitgmbh.de/downloads/team-foundation-server-tools/apply-company-policy-add-in.html</licenseUrl>
+    <projectUrl>http://www.aitgmbh.de/downloads/team-foundation-server-tools/apply-company-policy-add-in.html</projectUrl>
+    <copyright>Copyright (c) 2014, AIT GmbH &amp; Co. KG</copyright>
+    <iconUrl>http://www.aitgmbh.de/fileadmin/templates/templates2011/bilder/footer-logo.png</iconUrl>
+    <tags>AIT, Unit Tests, Integratoin Tests, System Tests, Coded UI</tags>
+    <summary>The package provides extensions making it easier to structure and implement tests.</summary>
+  </metadata>
+</package>
