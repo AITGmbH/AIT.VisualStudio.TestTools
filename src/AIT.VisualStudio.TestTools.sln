@@ -32,26 +32,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|Net45 = Debug|Net45
+		Release|Net45 = Release|Net45
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Debug|Net45.ActiveCfg = Debug|Net45
+		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Debug|Net45.Build.0 = Debug|Net45
+		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Release|Net45.ActiveCfg = Release|Net45
+		{2C225CA0-F533-4DB9-BE2D-2CB71CB55A74}.Release|Net45.Build.0 = Release|Net45
+		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Debug|Net45.ActiveCfg = Debug|Net45
+		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Debug|Net45.Build.0 = Debug|Net45
+		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Release|Net45.ActiveCfg = Release|Net45
+		{500A95FC-96B7-4EF7-B7B0-12411080A2B3}.Release|Net45.Build.0 = Release|Net45
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Debug|Net45.ActiveCfg = Debug|Net45
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Debug|Net45.Build.0 = Debug|Net45
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Release|Net45.ActiveCfg = Release|Net45
+		{714D3E6F-52FB-45B0-BF75-E1B022A59D13}.Release|Net45.Build.0 = Release|Net45
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Debug|Net45.ActiveCfg = Debug|Net45
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Debug|Net45.Build.0 = Debug|Net45
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Release|Net45.ActiveCfg = Release|Net45
+		{7FB51465-FEB5-48E0-8E8B-9F7826E24999}.Release|Net45.Build.0 = Release|Net45
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
