@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TestClientBase - AIT.VisualStudio.TestTools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="AIT GmbH">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/content/style.css" />
+    <link type="text/css" rel="stylesheet" href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/content/prism.css" />
+    <script type="text/javascript" src="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/content/tips.js"></script>
+    <script type="text/javascript" src="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/content/prism.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="https://matthid.github.io/Yaaf.AdvancedBuilding/content/img/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/index.html">AIT.VisualStudio.TestTools</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>TestClientBase </h1>
+<div class="xmldoc">
+    Defined in AIT.VisualStudio.TestTools.CodedUI.dll.
+</div>
+<div class="xmldoc">
+
+            Client base class for UI tests.
+            </br></div>
+  <h3>Constructors</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Constructor</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)">
+            new(...)
+          </code>
+          <div class="tip" id="1">
+            <strong>Signature:</strong> (executable:string * reuseExistingApplicationUnderTest:bool) -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Initializes a new instance of the <a href="ait-visualstudio-testtools-codedui-testclientbase.html">TestClientBase</a> class.
+            </br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Instance members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Instance member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)">
+            ApplicationUnderTest
+          </code>
+          <div class="tip" id="2">
+            <strong>Signature:</strong> ApplicationUnderTest<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Gets or sets the application under test.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)">
+            ApplicationUnderTestProcess()
+          </code>
+          <div class="tip" id="3">
+            <strong>Signature:</strong> unit -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Gets or sets the application under test process.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)">
+            Dispose()
+          </code>
+          <div class="tip" id="4">
+            <strong>Signature:</strong> unit -&gt; unit<br />
+              <strong>Modifiers:</strong> abstract<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Dispose data import job
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)">
+            Executable()
+          </code>
+          <div class="tip" id="5">
+            <strong>Signature:</strong> unit -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Gets the executable.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)">
+            LaunchApplicationUnderTest()
+          </code>
+          <div class="tip" id="6">
+            <strong>Signature:</strong> unit -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Call this to start the application.
+            </br>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)">
+            ReuseExistingApplicationUnderTest()
+          </code>
+          <div class="tip" id="7">
+            <strong>Signature:</strong> unit -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Gets or sets a value indicating whether an already running application under test should get reused.
+            </br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Static members</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Static member</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)">
+            SearchExecutable(fileName)
+          </code>
+          <div class="tip" id="8">
+            <strong>Signature:</strong> fileName:string -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+          
+            Searches the executable.
+            </br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/index.html">
+            <img src="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/content/img/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">AIT.VisualStudio.TestTools</li>
+
+            <li class="divider"></li>
+            <li><a href="https://www.nuget.org/packages/AIT.VisualStudio.TestTools/">Get AIT.VisualStudio.TestTools package via NuGet</a></li>
+            <li><a href="https://github.com/AITGmbH/AIT.VisualStudio.TestTools">Source Code</a></li>
+            <li><a href="https://github.com/AITGmbH/AIT.VisualStudio.TestTools/issues">Open bugs and feature requests</a></li>
+            <li><a href="https://github.com/AITGmbH/AIT.VisualStudio.TestTools/issues/new">Report Issue or Request Feature</a></li>
+            <li><a href="https://github.com/AITGmbH/AIT.VisualStudio.TestTools/blob/develop/LICENSE.md">License (Apache 2)</a></li>
+            <li><a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/Contributing.html">Contributing</a></li>
+            
+            <li class="nav-header">Documentation</li>
+              
+            <li><a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/index.html">Quick Intro</a></li>
+            <li><a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/ReleaseNotes.html">Release Notes</a></li>
+            <li><a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/DevelopReadme.html">Development Intro</a></li>
+            <li><a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/buildConfig.html">An example build configuration</a></li>
+
+            <li class="nav-header">Reference</li>
+              
+            <li><a href="https://AITGmbH.github.io/AIT.VisualStudio.TestTools/references/index.html">API Reference</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+      <a href="https://github.com/AITGmbH/AIT.VisualStudio.TestTools"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </body>
+  </html>

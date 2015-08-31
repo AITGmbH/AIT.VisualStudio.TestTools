@@ -1,2 +1,0 @@
-AIT.VisualStudio.TestTools
-==========================
