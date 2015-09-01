@@ -6,7 +6,7 @@ using System.Reflection;
 [assembly: AssemblyCopyrightAttribute("Copyright © 2015, AIT GmbH & Co. KG")]
 [assembly: AssemblyVersionAttribute("0.4.0")]
 [assembly: AssemblyFileVersionAttribute("0.4.0")]
-[assembly: AssemblyInformationalVersionAttribute("0.4.0-alpha")]
+[assembly: AssemblyInformationalVersionAttribute("0.4.0-beta001")]
 namespace System {
     internal static class AssemblyVersionInformation {
         internal const string Version = "0.4.0";
