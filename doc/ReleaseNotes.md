@@ -1,4 +1,8 @@
-﻿### 0.4.0-alpha
+﻿### 0.4.0-beta001
+
+ * Set SpecificVersion to false.
+
+### 0.4.0-alpha
 
  * Project cleanup and restructuring.
 
