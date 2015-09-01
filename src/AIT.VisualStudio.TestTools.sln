@@ -30,6 +30,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIT.VisualStudio.TestTools.MEF", "AIT.VisualStudio.TestTools.MEF\AIT.VisualStudio.TestTools.MEF.csproj", "{7FB51465-FEB5-48E0-8E8B-9F7826E24999}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{73DDB452-A4D1-41CC-82D8-2259E23E52AD}"
+	ProjectSection(SolutionItems) = preProject
+		..\buildConfig.fsx = ..\buildConfig.fsx
+		..\doc\ReleaseNotes.md = ..\doc\ReleaseNotes.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Net45 = Debug|Net45
