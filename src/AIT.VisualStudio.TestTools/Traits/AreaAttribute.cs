@@ -36,7 +36,7 @@
                         areaName += areas[j] + ".";
                     }
 
-                    list.Add("Area." + areaName.TrimEnd('.') + "");
+                    list.Add("Area." + areaName.TrimEnd('.'));
                 }
             }
 

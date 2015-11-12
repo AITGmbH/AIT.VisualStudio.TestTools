@@ -69,7 +69,7 @@ namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
         /// </summary>
         /// <param name="control">The control.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">control</exception>
+        /// <exception cref="System.ArgumentNullException">the control object was null.</exception>
         public static bool Exists(this UITestControl control)
         {
             if (control == null)
@@ -129,7 +129,7 @@ namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
         /// Clicks the on first visible child.
         /// </summary>
         /// <param name="control">The control.</param>
-        /// <exception cref="ArgumentNullException">control</exception>
+        /// <exception cref="ArgumentNullException">the control object was null.</exception>
         public static void ClickOnFirstVisibleChild(this UITestControl control)
         {
             if (control == null)

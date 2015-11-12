@@ -1,4 +1,4 @@
-﻿namespace AIT.VisualSTudio.TestTools.Samples.Calculator.Tests.System.Map
+﻿namespace AIT.VisualStudio.TestTools.Samples.Calculator.Tests.System.Map
 {
     using AIT.VisualStudio.TestTools.CodedUI.Extensions;
 
@@ -7,19 +7,25 @@
     using Microsoft.VisualStudio.TestTools.UITesting;
     using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
+    /// <summary>
+    /// The Win32 calculator window.
+    /// </summary>
     public class CalculatorShell : WinWindow
     {
+        /// <summary>
+        /// Create a new CalculatorShell instance
+        /// </summary>
+        /// <param name="parent">the parent control</param>
         public CalculatorShell(UITestControl parent)
             : base(parent)
         {
-            #region Search Criteria
-
             this.SearchProperties[WinControl.PropertyNames.ControlId] = "131";
             this.WindowTitles.Add("Calculator");
-
-            #endregion
         }
 
+        /// <summary>
+        /// The 1 button.
+        /// </summary>
         public WinButton Button1
         {
             get
@@ -33,6 +39,9 @@
             }
         }
 
+        /// <summary>
+        /// The 2 button.
+        /// </summary>
         public WinButton Button2
         {
             get
@@ -46,6 +55,9 @@
             }
         }
 
+        /// <summary>
+        /// The 3 button.
+        /// </summary>
         public WinButton Button3
         {
             get
@@ -59,6 +71,9 @@
             }
         }
 
+        /// <summary>
+        /// The 4 button.
+        /// </summary>
         public WinButton Button4
         {
             get
@@ -72,6 +87,9 @@
             }
         }
 
+        /// <summary>
+        /// The 5 button.
+        /// </summary>
         public WinButton Button5
         {
             get
@@ -85,6 +103,9 @@
             }
         }
 
+        /// <summary>
+        /// The 6 button.
+        /// </summary>
         public WinButton Button6
         {
             get
@@ -98,6 +119,9 @@
             }
         }
 
+        /// <summary>
+        /// The 7 button.
+        /// </summary>
         public WinButton Button7
         {
             get
@@ -111,6 +135,9 @@
             }
         }
 
+        /// <summary>
+        /// The 8 button.
+        /// </summary>
         public WinButton Button8
         {
             get
@@ -124,6 +151,9 @@
             }
         }
 
+        /// <summary>
+        /// The 9 button.
+        /// </summary>
         public WinButton Button9
         {
             get
@@ -137,6 +167,9 @@
             }
         }
 
+        /// <summary>
+        /// The 0 button.
+        /// </summary>
         public WinButton Button0
         {
             get
@@ -150,13 +183,16 @@
             }
         }
 
+        /// <summary>
+        /// The result button.
+        /// </summary>
         public WinText Result
         {
             get
             {
                 var container =
                     this.Find<WinWindow>(
-                        new PropertyExpressionCollection { new PropertyExpression(PropertyNames.ControlId, "150") });
+                        new PropertyExpressionCollection { new PropertyExpression(WinControl.PropertyNames.ControlId, "150") });
 
                 container.WindowTitles.Add("Calculator");
 
@@ -171,6 +207,9 @@
             }
         }
 
+        /// <summary>
+        /// The equals button.
+        /// </summary>
         public WinButton ButtonEquals
         {
             get
@@ -186,6 +225,9 @@
             }
         }
 
+        /// <summary>
+        /// The add button.
+        /// </summary>
         public WinButton ButtonAdd
         {
             get
@@ -201,6 +243,10 @@
             }
         }
 
+        /// <summary>
+        /// Enter the given number.
+        /// </summary>
+        /// <param name="number">the number to enter into the calculator.</param>
         public void Enter(int number)
         {
             var digits = number.ToString(CultureInfo.InvariantCulture).ToCharArray();

@@ -1,6 +1,6 @@
 ﻿namespace AIT.VisualStudio.TestTools.Samples.Calculator.Tests.System
 {
-    using AIT.VisualSTudio.TestTools.Samples.Calculator.Tests.System.Map;
+    using AIT.VisualStudio.TestTools.Samples.Calculator.Tests.System.Map;
     using AIT.VisualStudio.TestTools.Traits;
     using AIT.VisualStudio.TestTools.CodedUI.Extensions;
 
@@ -21,6 +21,7 @@
         {
             using (var client = new CalculatorClient())
             {
+                client.LaunchApplicationUnderTest();
                 client.Shell.Button1.Click();
                 client.Shell.ButtonAdd.Click();
                 client.Shell.Button2.Click();
@@ -39,6 +40,7 @@
         {
             using (var client = new CalculatorClient())
             {
+                client.LaunchApplicationUnderTest();
                 client.Shell.Enter(122);
                 client.Shell.ButtonAdd.Click();
                 client.Shell.Enter(110);
@@ -57,6 +59,7 @@
         {
             using (var client = new CalculatorClient())
             {
+                client.LaunchApplicationUnderTest();
                 client.Shell.Enter(1);
                 client.Shell.ButtonAdd.Click();
                 client.Shell.Enter(299);

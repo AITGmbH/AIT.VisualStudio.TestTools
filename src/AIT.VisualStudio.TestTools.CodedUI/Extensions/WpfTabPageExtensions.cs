@@ -14,6 +14,8 @@ namespace AIT.VisualStudio.TestTools.CodedUI.Extensions
         /// Determines whether the specified control is selected.
         /// </summary>
         /// <param name="tabPage">The tab page.</param>
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static bool IsSelected(this WpfTabPage tabPage)
         {
             if (tabPage == null)

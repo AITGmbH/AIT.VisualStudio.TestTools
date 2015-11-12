@@ -1,15 +1,13 @@
-﻿using System.Globalization;
-using System.Text;
+﻿using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AIT.VisualStudio.TestTools.Common
 {
-    using System;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.CompilerServices;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     /// <summary>
     /// Takes the time which a test needs
     /// </summary>
@@ -17,26 +15,21 @@ namespace AIT.VisualStudio.TestTools.Common
     {
         #region Fields
 
-        private readonly string _caller;
         private bool _isStopped = false;
 
         private string Caller
         {
-            get { return _caller; }
+            get;
         }
-
-        private readonly Stopwatch _stopWatch;
 
         private Stopwatch StopWatch
         {
-            get { return _stopWatch; }
+            get;
         }
-
-        private readonly TimeSpan _expectedMaximumExecutionTime;
 
         private TimeSpan ExpectedMaximumExecutionTime
         {
-            get { return _expectedMaximumExecutionTime; }
+            get;
         }
 
         #endregion
@@ -50,9 +43,9 @@ namespace AIT.VisualStudio.TestTools.Common
         /// <param name="caller">The caller.</param>
         private TimeTaker(TimeSpan expectedMaximumExecutionTime, string caller)
         {
-            _expectedMaximumExecutionTime = expectedMaximumExecutionTime;
-            _caller = caller;
-            _stopWatch = new Stopwatch();
+            ExpectedMaximumExecutionTime = expectedMaximumExecutionTime;
+            Caller = caller;
+            StopWatch = new Stopwatch();
         }
 
         #endregion
@@ -130,7 +123,7 @@ namespace AIT.VisualStudio.TestTools.Common
         /// <summary>
         /// Ends the current execution time tracking and throws an exception if applicable
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">the message for the exception or the trace message.</param>
         [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed", Justification = "Used from C# only.")]
         public void End(string message = "Maximum execution time was exceeded!")
         {
