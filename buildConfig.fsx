@@ -59,6 +59,34 @@ Setup which nuget packages are created.
               ReleaseNotes = toLines release.Notes
               Dependencies =
                 [ ]
+                  |> List.map (fun name -> name, (GetPackageVersion "packages" name |> RequireExactly)) } )
+        "AIT.VisualStudio.TestTools.CodedUI.nuspec", (fun config p ->
+          { p with
+              Project = "AIT.VisualStudio.TestTools.CodedUI"
+              Version = config.Version
+              NoDefaultExcludes = true
+              ReleaseNotes = toLines release.Notes
+              FrameworkAssemblies =
+                [ { AssemblyName = "UIAutomationClient"; FrameworkVersions = [] }
+                  { AssemblyName = "UIAutomationTypes"; FrameworkVersions = [] }
+                  { AssemblyName = "WindowsBase"; FrameworkVersions = [] }
+                  { AssemblyName = "System.Data.DataSetExtensions"; FrameworkVersions = [] }
+                  { AssemblyName = "System.Windows.Forms"; FrameworkVersions = [] }
+                  { AssemblyName = "System.Drawing"; FrameworkVersions = [] } ]
+              Dependencies =
+                [ ]
+                  |> List.map (fun name -> name, (GetPackageVersion "packages" name |> RequireExactly)) } )
+        "AIT.VisualStudio.TestTools.MEF.nuspec", (fun config p ->
+          { p with
+              Project = "AIT.VisualStudio.TestTools.MEF"
+              Version = config.Version
+              NoDefaultExcludes = true
+              ReleaseNotes = toLines release.Notes
+              FrameworkAssemblies =
+                [ { AssemblyName = "System.ComponentModel.Composition"; FrameworkVersions = [] }
+                  { AssemblyName = "System.Data.DataSetExtensions"; FrameworkVersions = [] } ]
+              Dependencies =
+                [ ]
                   |> List.map (fun name -> name, (GetPackageVersion "packages" name |> RequireExactly)) } ) ]
 (**
 With `UseNuget` you can specify if AIT.Build should restore nuget packages

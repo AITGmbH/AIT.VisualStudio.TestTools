@@ -1,4 +1,8 @@
-﻿### 0.4.0-beta001
+﻿### 0.4.0-beta002
+
+ * Split the project into multiple NuGet packages.
+
+### 0.4.0-beta001
 
  * Set SpecificVersion to false.
 

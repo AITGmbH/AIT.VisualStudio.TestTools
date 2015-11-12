@@ -18,8 +18,8 @@
     @dependencies@
   </metadata>
   <files>
-    <file src="release/lib/net45/AIT.VisualStudio.TestTools.dll" target="lib\net45\AIT.VisualStudio.TestTools.dll" />
-    <file src="release/lib/net45/AIT.VisualStudio.TestTools.xml" target="lib\net45\AIT.VisualStudio.TestTools.xml" />
-    <file src="src/AIT.VisualStudio.TestTools.targets" target="build\AIT.VisualStudio.TestTools.targets" />
+    <file src="release/lib/net45/AIT.VisualStudio.TestTools.CodedUI.dll" target="lib\net45\AIT.VisualStudio.TestTools.CodedUI.dll" />
+    <file src="release/lib/net45/AIT.VisualStudio.TestTools.CodedUI.xml" target="lib\net45\AIT.VisualStudio.TestTools.CodedUI.xml" />
+    <file src="src/AIT.VisualStudio.TestTools.CodedUI.targets" target="build\AIT.VisualStudio.TestTools.CodedUI.targets" />
   </files>
 </package>

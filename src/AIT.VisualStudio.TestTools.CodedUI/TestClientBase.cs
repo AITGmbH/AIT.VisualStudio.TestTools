@@ -144,16 +144,7 @@ namespace AIT.VisualStudio.TestTools.CodedUI
                 Trace.WriteLine(e.Error);
             }
         }
-
-        /// <summary>
-        /// Searches the executable.
-        /// </summary>
-        /// <returns></returns>
-        protected virtual FileInfo SearchExecutable()
-        {
-            return null;
-        }
-
+        
         /// <summary>
         /// Called when the <see cref="ApplicationUnderTest"/> was started.
         /// </summary>
